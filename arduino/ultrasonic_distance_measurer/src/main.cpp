@@ -27,7 +27,7 @@ void loop() {
   digitalWrite(trigPin, LOW);
 
   // Read echo
-  long duration = pulseIn(echoPin, HIGH, 30000); // timeout safety
+  long duration = pulseIn(echoPin, HIGH); 
   float distance = duration * 0.034 / 2;
 
   Serial.print("Distance: ");
