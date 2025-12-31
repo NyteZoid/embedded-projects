@@ -1,10 +1,30 @@
 # Embedded Projects
 
-A collection of embedded systems projects built while learning
-microcontrollers and hardware–software interaction.
+A collection of hands-on embedded systems projects built while learning
+microcontrollers, sensors, and hardware–software interaction.
 
-## Structure
-- `arduino/` – Arduino and microcontroller projects
+This repository serves as a long-term workspace for experimenting with
+embedded concepts using platforms such as Arduino and, in the future,
+Raspberry Pi.
 
-## Projects
-- Ultrasonic Distance Measurer – HC-SR04 based distance sensing with LED indicators
+The focus is on understanding fundamentals, building practical hardware
+projects, and maintaining clean project structure and version control.
+
+
+## Tools & Technologies
+
+- C / C++
+- Arduino framework
+- PlatformIO
+- Visual Studio Code
+- Common sensors and electronic components
+  
+
+## Status
+
+Actively maintained and expanded as new projects are completed.
+
+
+## Author
+
+Abhiraj Mandal
