@@ -10,7 +10,6 @@ Raspberry Pi.
 The focus is on understanding fundamentals, building practical hardware
 projects, and maintaining clean project structure and version control.
 
----
 
 ## Tools & Technologies
 
@@ -19,14 +18,12 @@ projects, and maintaining clean project structure and version control.
 - PlatformIO
 - Visual Studio Code
 - Common sensors and electronic components
-
----
+  
 
 ## Status
 
 Actively maintained and expanded as new projects are completed.
 
----
 
 ## Author
 
