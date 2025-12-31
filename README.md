@@ -27,4 +27,4 @@ Actively maintained and expanded as new projects are completed.
 
 ## Author
 
-NyteZoid
+Abhiraj Mandal
