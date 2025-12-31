@@ -56,7 +56,7 @@ The complete wiring for the project is shown below.
 - Arduino Uno
 - HC-SR04 Ultrasonic Sensor
 - Red, Yellow, and Green LEDs
-- Current-limiting resistors (220 Ω or 330 Ω)
+- Current-limiting resistors (220 Ω)
 - Breadboard
 - Jumper wires
 
