@@ -1,8 +1,8 @@
 # Ultrasonic Distance Measurer
 
 An Arduino-based embedded systems project that measures the distance to an
-object using an HC-SR04 ultrasonic sensor and provides real-time visual
-feedback using red, yellow, and green LEDs.
+object using an HC-SR04 ultrasonic sensor and provides real-time visual and audible
+feedback LEDs and an active buzzer.
 
 The project demonstrates basic sensor interfacing, timing-based distance
 calculation, and decision-making logic on a microcontroller.
@@ -51,6 +51,14 @@ The complete wiring for the project is shown below.
 ![Circuit Diagram](circuit_diagram.png)
 
 
+## Schematic Diagram
+
+The schematic below shows the logical electrical connections between the
+Arduino Uno, ultrasonic sensor, LEDs, and the active buzzer.
+
+![Schematic](schematic.png)
+
+
 ## Hardware Components
 
 - Arduino Uno
@@ -74,7 +82,11 @@ The complete wiring for the project is shown below.
 - **Yellow LED** → D5 (via resistor)
 - **Green LED** → D7 (via resistor)
 
-All LED cathodes are connected to ground.
+### Buzzer
+- **Active Buzzer (+)** → D6
+- **Active Buzzer (–)** → GND
+
+All cathodes are connected to ground.
 
 
 ## Software & Tools

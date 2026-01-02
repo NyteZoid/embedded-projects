@@ -3,9 +3,11 @@
 const int trigPin = 9;
 const int echoPin = 10;
 
-const int redLED    = 3;
+const int redLED = 3;
 const int yellowLED = 5;
-const int greenLED  = 7;
+const int greenLED = 7;
+
+const int buzzerPIN = 2;
 
 void setup() {
   pinMode(trigPin, OUTPUT);
@@ -14,44 +16,54 @@ void setup() {
   pinMode(redLED, OUTPUT);
   pinMode(yellowLED, OUTPUT);
   pinMode(greenLED, OUTPUT);
+  pinMode(buzzerPIN, OUTPUT);
 
   Serial.begin(9600);
 }
 
 void loop() {
-  // Send ultrasonic pulse
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
+
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
 
-  // Read echo
-  long duration = pulseIn(echoPin, HIGH); 
+  long duration = pulseIn(echoPin, HIGH);
   float distance = duration * 0.034 / 2;
 
   Serial.print("Distance: ");
   Serial.print(distance);
   Serial.println(" cm");
 
-  // LED logic
   if (distance < 10 && distance > 0) {
-    // VERY CLOSE
     digitalWrite(redLED, HIGH);
     digitalWrite(yellowLED, LOW);
     digitalWrite(greenLED, LOW);
+
+    digitalWrite(buzzerPIN, HIGH);
+    delay(100);
+    digitalWrite(buzzerPIN, LOW);
+    delay(100);
   }
+
   else if (distance >= 10 && distance <= 20) {
-    // MEDIUM
     digitalWrite(redLED, LOW);
     digitalWrite(yellowLED, HIGH);
     digitalWrite(greenLED, LOW);
+
+    digitalWrite(buzzerPIN, HIGH);
+    delay(300);
+    digitalWrite(buzzerPIN, LOW);
+    delay(300);
   }
+
   else {
-    // FAR
     digitalWrite(redLED, LOW);
     digitalWrite(yellowLED, LOW);
     digitalWrite(greenLED, HIGH);
+
+    digitalWrite(buzzerPIN, LOW);
   }
 
   delay(200);
