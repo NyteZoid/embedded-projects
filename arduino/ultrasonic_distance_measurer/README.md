@@ -84,7 +84,7 @@ Arduino Uno, ultrasonic sensor, LEDs, and the active buzzer.
 - **Green LED** → D7 (via resistor)
 
 ### Buzzer
-- **Active Buzzer (+)** → D6
+- **Active Buzzer (+)** → D2
 - **Active Buzzer (–)** → GND
 
 All cathodes are connected to ground.
