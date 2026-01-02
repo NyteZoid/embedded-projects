@@ -63,6 +63,7 @@ Arduino Uno, ultrasonic sensor, LEDs, and the active buzzer.
 
 - Arduino Uno
 - HC-SR04 Ultrasonic Sensor
+- Active Buzzer
 - Red, Yellow, and Green LEDs
 - Current-limiting resistors (220 Ω)
 - Breadboard
