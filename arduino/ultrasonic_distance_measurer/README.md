@@ -2,7 +2,7 @@
 
 An Arduino-based embedded systems project that measures the distance to an
 object using an HC-SR04 ultrasonic sensor and provides real-time visual and audible
-feedback LEDs and an active buzzer.
+feedback using LEDs and an active buzzer.
 
 The project demonstrates basic sensor interfacing, timing-based distance
 calculation, and decision-making logic on a microcontroller.
