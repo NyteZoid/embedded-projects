@@ -35,8 +35,37 @@ void loop() {
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
 
-  long duration = pulseIn(echoPin, HIGH);
+  long duration = pulseIn(echoPin, HIGH, 30000);
+
+  if (duration == 0) {
+    lcd.setCursor(0, 0);
+    lcd.print("Dist: ---- cm ");
+    lcd.setCursor(0, 1);
+    lcd.print("OUT OF RANGE ");
+
+    digitalWrite(buzzerPIN, LOW);
+    digitalWrite(redLED, LOW);
+    digitalWrite(yellowLED, LOW);
+    digitalWrite(greenLED, LOW);
+
+    return;
+  }
+
   float distance = duration * 0.034 / 2;
+
+  if (distance > 300) {
+    lcd.setCursor(0, 0);
+    lcd.print("Dist: ---- cm ");
+    lcd.setCursor(0, 1);
+    lcd.print("OUT OF RANGE ");
+
+    digitalWrite(buzzerPIN, LOW);
+    digitalWrite(redLED, LOW);
+    digitalWrite(yellowLED, LOW);
+    digitalWrite(greenLED, LOW);
+
+    return;
+  }
 
   Serial.print("Distance: ");
   Serial.print(distance);
@@ -54,7 +83,7 @@ void loop() {
     digitalWrite(yellowLED, LOW);
     digitalWrite(greenLED, LOW);
 
-    lcd.print("CLOSE ");
+    lcd.print("Status: CLOSE ");
 
     digitalWrite(buzzerPIN, HIGH);
     delay(100);
@@ -67,7 +96,7 @@ void loop() {
     digitalWrite(yellowLED, HIGH);
     digitalWrite(greenLED, LOW);
 
-    lcd.print("MEDIUM");
+    lcd.print("Status: MEDIUM");
 
     digitalWrite(buzzerPIN, HIGH);
     delay(300);
@@ -80,7 +109,7 @@ void loop() {
     digitalWrite(yellowLED, LOW);
     digitalWrite(greenLED, HIGH);
 
-    lcd.print("SAFE  ");
+    lcd.print("Status: SAFE  ");
 
     digitalWrite(buzzerPIN, LOW);
   }
