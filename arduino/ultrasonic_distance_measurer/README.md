@@ -2,7 +2,7 @@
 
 An Arduino-based embedded systems project that measures the distance to an
 object using an HC-SR04 ultrasonic sensor and provides real-time visual and audible
-feedback using LEDs and an active buzzer.
+feedback using LEDs, an active buzzer, and a 16x2 LCD.
 
 The project demonstrates basic sensor interfacing, timing-based distance
 calculation, and decision-making logic on a microcontroller.
@@ -18,6 +18,12 @@ three LEDs lights up to indicate proximity:
 - **Yellow** → Object is at a medium distance
 - **Red** → Object is very close
 
+The buzzer provides audible alerts with increasing frequency as the object
+moves closer to the sensor.
+
+The LCD displays the measured distance in centimeters on the first row and the
+corresponding proximity status (SAFE, MEDIUM, or CLOSE) on the second row.
+
 Such distance-measurement systems are commonly used in applications like
 parking sensors, obstacle detection, and simple robotics.
 
@@ -29,7 +35,7 @@ parking sensors, obstacle detection, and simple robotics.
 3. The wave reflects off an object and returns to the sensor.
 4. The **ECHO** pin remains HIGH for the duration of the round trip.
 5. The Arduino measures this time using `pulseIn()`.
-6. Distance is calculated using the speed of sound: ```distance (cm) = (duration × 0.034) / 2```
+6. Distance is calculated using the speed of sound: `distance (cm) = (duration × 0.034) / 2`
 7. The calculated distance is compared against predefined thresholds to determine which LED should be turned on.
 
 
@@ -53,8 +59,7 @@ The complete wiring for the project is shown below.
 
 ## Schematic Diagram
 
-The schematic below shows the logical electrical connections between the
-Arduino Uno, ultrasonic sensor, LEDs, and the active buzzer.
+The schematic below shows the logical electrical connections between all components.
 
 ![Schematic](schematic.png)
 
@@ -65,7 +70,7 @@ Arduino Uno, ultrasonic sensor, LEDs, and the active buzzer.
 - HC-SR04 Ultrasonic Sensor
 - Active Buzzer
 - Red, Yellow, and Green LEDs
-- Current-limiting resistors (220 Ω)
+- Resistors (220Ω x 4 and 4k7Ω x 1)
 - Breadboard
 - Jumper wires
 
@@ -79,13 +84,29 @@ Arduino Uno, ultrasonic sensor, LEDs, and the active buzzer.
 - **ECHO** → D10
 
 ### LEDs
-- **Red LED** → D3 (via resistor)
-- **Yellow LED** → D5 (via resistor)
-- **Green LED** → D7 (via resistor)
+- **Red LED** → A5 (via resistor)
+- **Yellow LED** → A3 (via resistor)
+- **Green LED** → A1 (via resistor)
 
 ### Buzzer
 - **Active Buzzer (+)** → D2
 - **Active Buzzer (–)** → GND
+
+### 16×2 LCD (HD44780, 4-bit mode)
+
+- **RS** → D12  
+- **E** → D11  
+- **D4** → D8  
+- **D5** → D13  
+- **D6** → D4  
+- **D7** → D6  
+- **VCC** → 5V  
+- **GND** → GND  
+- **RW** → GND  
+
+**Contrast (VO):**  
+A fixed **4.7 kΩ resistor to GND** is used to set LCD contrast due to the absence of a potentiometer.
+
 
 All cathodes are connected to ground.
 
@@ -96,6 +117,7 @@ All cathodes are connected to ground.
 - Framework: Arduino
 - Toolchain: PlatformIO
 - Editor: Visual Studio Code
+- Libraries: LiquidCrystal
 
 
 ## How to Run

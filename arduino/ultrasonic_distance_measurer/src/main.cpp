@@ -1,13 +1,16 @@
 #include <Arduino.h>
+#include <LiquidCrystal.h>
 
 const int trigPin = 9;
 const int echoPin = 10;
 
-const int redLED = 3;
-const int yellowLED = 5;
-const int greenLED = 7;
+const int redLED = A5;
+const int yellowLED = A3;
+const int greenLED = A1;
 
 const int buzzerPIN = 2;
+
+LiquidCrystal lcd(12, 11, 8, 13, 4, 6);
 
 void setup() {
   pinMode(trigPin, OUTPUT);
@@ -19,6 +22,9 @@ void setup() {
   pinMode(buzzerPIN, OUTPUT);
 
   Serial.begin(9600);
+
+  lcd.begin(16, 2);
+  lcd.clear();
 }
 
 void loop() {
@@ -34,12 +40,21 @@ void loop() {
 
   Serial.print("Distance: ");
   Serial.print(distance);
-  Serial.println(" cm");
+  Serial.println(" cm   ");
+
+  lcd.setCursor(0, 0);
+  lcd.print("Dist: ");
+  lcd.print(distance, 1);
+  lcd.print(" cm   ");
+
+  lcd.setCursor(0, 1);
 
   if (distance < 10 && distance > 0) {
     digitalWrite(redLED, HIGH);
     digitalWrite(yellowLED, LOW);
     digitalWrite(greenLED, LOW);
+
+    lcd.print("CLOSE ");
 
     digitalWrite(buzzerPIN, HIGH);
     delay(100);
@@ -52,6 +67,8 @@ void loop() {
     digitalWrite(yellowLED, HIGH);
     digitalWrite(greenLED, LOW);
 
+    lcd.print("MEDIUM");
+
     digitalWrite(buzzerPIN, HIGH);
     delay(300);
     digitalWrite(buzzerPIN, LOW);
@@ -62,6 +79,8 @@ void loop() {
     digitalWrite(redLED, LOW);
     digitalWrite(yellowLED, LOW);
     digitalWrite(greenLED, HIGH);
+
+    lcd.print("SAFE  ");
 
     digitalWrite(buzzerPIN, LOW);
   }
